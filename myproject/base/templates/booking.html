@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1 class="title">Room Booking Guests</h1>
+
+<div class="guest-container">
+
+    {% for i in data %}
+    <div class="guest-card">
+
+        <h2 class="section-title">Guest Room Details</h2>
+        <div class="info-box">
+            <p><strong>Room Number:</strong> {{ i.room_number }}</p>
+            <p><strong>Room Type:</strong> {{ i.room_type }}</p>
+            <p><strong>Description:</strong> {{ i.room_desc }}</p>
+            <p><strong>Price:</strong> ₹ {{ i.price_per_night }}</p>
+            <p><strong>Status:</strong> {{ i.is_available }}</p>
+        </div>
+
+        <h2 class="section-title">Guest Details</h2>
+        <div class="info-box">
+            <p><strong>Name:</strong> {{ i.name }}</p>
+            <p><strong>Email:</strong> {{ i.email }}</p>
+            <p><strong>Phone:</strong> {{ i.phone_number }}</p>
+            <p><strong>Gender:</strong> {{ i.gender }}</p>
+            <p><strong>Country:</strong> {{ i.country }}</p>
+        </div>
+
+        <div class="btn-group">
+            <a href="{% url 'update' i.id %}" class="btn update">Update</a>
+            <a href="{% url 'delete' i.id %}" class="btn delete">Delete</a>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

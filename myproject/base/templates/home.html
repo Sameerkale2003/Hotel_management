@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h1 class="title">Available Rooms</h1>
+
+<div class="room-container">
+
+    {% for i in data %}
+    <div class="room-card">
+
+        <div class="room-header">
+            <h2>Room {{ i.room_number }}</h2>
+            <span class="badge {% if i.is_available %}available{% else %}not-available{% endif %}">
+                {% if i.is_available %}Available{% else %}Booked{% endif %}
+            </span>
+        </div>
+
+        <p class="type">{{ i.room_type }}</p>
+        <p class="desc">{{ i.room_desc }}</p>
+        <p class="price">₹ {{ i.price_per_night }}</p>
+
+        <a href="{% url 'book_now' i.id %}" class="book-btn">Book Now</a>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}
