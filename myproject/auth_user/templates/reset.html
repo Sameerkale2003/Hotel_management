@@ -1,0 +1,83 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+        color: #333;
+    }
+
+    .error {
+        text-align: center;
+        color: red;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    form {
+        background: #f0f8ff;
+        width: 350px;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin-top: 20px;
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: 600;
+        float: left;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #888;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background: #007bff;
+        color: white;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+</style>
+
+<h2>Change your password</h2>
+
+{% if old_status %}
+<h2 class="error">Old password is not correct...!!!</h2>
+{% endif %}
+
+<center>
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <label>Enter your Old password:</label>
+        <input type="password" name="oldpasw">
+
+        <label>Enter your New password:</label>
+        <input type="password" name="newpasw">
+
+        <button type="submit">Submit</button>
+    </form>
+</center>
+
+{% endblock %}

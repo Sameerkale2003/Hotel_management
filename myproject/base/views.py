@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
+from django.contrib.auth.decorators import login_required
 
 
 def add_room(request):
@@ -21,6 +22,8 @@ def add_room(request):
     
     return render(request,'add_room.html')
 
+
+@login_required(login_url="login_")
 def home(request):
     data = Room.objects.all()
     return render(request,'home.html',{'data':data})
@@ -55,8 +58,6 @@ def booking(request):
     data = Guest.objects.all()
     return render(request,'booking.html',{'data':data})
            
-def about(request):
-    return render(request,'about.html')
 
 def update(request,pk):
     data = Guest.objects.get(id=pk)

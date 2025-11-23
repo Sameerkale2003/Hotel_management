@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #eef7ff;
+}
+
+h2 {
+    text-align: center;
+    color: #222;
+    margin-top: 20px;
+}
+
+.profile-card {
+    width: 420px;  /* FIXED WIDTH */
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.profile-card:hover {
+    transform: scale(1.02);
+}
+
+.profile-card h3 {
+    margin: 12px 0;
+    font-size: 17px;
+    color: #444;
+    text-align: left;
+}
+
+.profile-card b {
+    color: #0066cc;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+    background: #008cff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+a:hover {
+    background: #005bb5;
+}
+</style>
+
+
+<center>
+    <h2>Profile Page</h2>
+
+    <div class="profile-card">
+        <h3><b>User:</b> {{request.user}}</h3>
+        <h3><b>First Name:</b> {{request.user.first_name}}</h3>
+        <h3><b>Last Name:</b> {{request.user.last_name}}</h3>
+        <h3><b>Email:</b> {{request.user.email}}</h3>
+        <h3><b>Username:</b> {{request.user.username}}</h3>
+        <h3><b>Password Hash:</b> {{request.user.password}}</h3>
+        <h3><b>Verified Status:</b> {{request.user.is_authenticated}}</h3>
+
+        <a href="{% url 'reset' %}">Reset Password</a>
+    </div>
+</center>
+
+{% endblock %}

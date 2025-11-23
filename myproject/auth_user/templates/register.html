@@ -1,0 +1,93 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+        color: #333;
+    }
+
+    form {
+        background: #f4faff;
+        width: 350px;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin-top: 20px;
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: bold;
+        float: left;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #a9a9a9;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background: #007bff;
+        color: white;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    .error {
+        text-align: center;
+        color: red;
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+</style>
+
+<h1>This is my register page</h1>
+
+{% if status %}
+    <h1 class="error">Username is already taken!! Use a different username</h1>
+{% endif %}
+
+<center>
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        <label>First Name:</label>
+        <input type="text" name="first_name">
+
+        <label>Last Name:</label>
+        <input type="text" name="last_name">
+
+        <label>Email:</label>
+        <input type="email" name="email">
+
+        <label>Username:</label>
+        <input type="text" name="username">
+
+        <label>Password:</label>
+        <input type="password" name="password">
+
+        <button type="submit">Submit</button>
+    </form>
+</center>
+
+{% endblock %}

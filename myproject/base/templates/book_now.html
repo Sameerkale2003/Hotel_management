@@ -2,6 +2,69 @@
 
 {% block content %}
 
+<style>
+    .order-container {
+        width: 420px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .order-container h2 {
+        text-align: left;
+        color: #0056a3;
+        font-size: 22px;
+        border-left: 4px solid #0077cc;
+        padding-left: 10px;
+        margin-bottom: 15px;
+    }
+
+    .order-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .order-form label {
+        font-weight: bold;
+        margin-top: 10px;
+        color: #333;
+    }
+
+    .order-form input {
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        transition: 0.3s;
+    }
+
+    .order-form input:focus {
+        border-color: #0077cc;
+        outline: none;
+        box-shadow: 0 0 6px rgba(0,119,204,0.4);
+    }
+
+    .btn-confirm {
+        margin-top: 20px;
+        padding: 12px;
+        background: #0077cc;
+        color: white;
+        border-radius: 6px;
+        border: none;
+        font-size: 17px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    .btn-confirm:hover {
+        background: #005fa3;
+    }
+</style>
+
 <div class="order-container">
     <h2>Room Details...</h2>
 

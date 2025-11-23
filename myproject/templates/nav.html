@@ -1,14 +1,94 @@
 <nav class="nav">
+    {% if user.is_authenticated %}
+
     <div class="logo">
-        <h1>Hotel</h1>
+        <h1>Hotel Booking...</h1>
     </div>
+
     <div class="links">
-        <h3>
-            <a href="{% url 'home' %}">HOME</a>
-            <a href="{% url 'about' %}">ABOUT</a>
-            <a href="{% url 'history' %}">HISTORY</a>
-            <a href="{% url 'add_room' %}">ADD_ROOM</a>
-            <a href="{% url 'booking' %}">BOOKING</a>
-        </h3>
+        <a href="{% url 'home' %}">HOME</a>
+        <a href="{% url 'history' %}">HISTORY</a>
+        <a href="{% url 'add_room' %}">ADD ROOM</a>
+        <a href="{% url 'booking' %}">BOOKING</a>
+        <a href="{% url 'logout_' %}">LOGOUT</a>
+        <a href="{% url 'profile' %}">PROFILE</a>
     </div>
+
+    {% else %}
+
+    <div class="logo">
+        <h1>Hotel Register...</h1>
+    </div>
+
+    <div class="links">
+        <a href="{% url 'login_' %}">LOGIN</a>
+        <a href="{% url 'register' %}">REGISTER</a>
+    </div>
+
+    {% endif %}
 </nav>
+
+<style>
+    *{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+/* NAVBAR MAIN */
+/* NAVBAR MAIN */
+.nav {
+    width: 100%;
+    background: #0C4BFA;
+    padding: 15px 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* LOGO */
+.logo h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* LINKS */
+.links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.links a {
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+/* Hover effect */
+.links a:hover {
+    background: white;
+    color: #0C4BFA;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .links {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+</style>
+

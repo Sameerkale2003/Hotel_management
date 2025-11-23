@@ -1,0 +1,84 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    .error {
+        color: red;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    form {
+        background: #f0f8ff;
+        width: 320px;
+        padding: 25px;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+        font-weight: bold;
+        float: left;
+        margin-bottom: 5px;
+        font-size: 15px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #888;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        background: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+</style>
+
+<center>
+    <h1>This is my login page</h1>
+
+    {% if status %}
+    <h2 class="error">Enter the correct username or password...!!!</h2>
+    {% endif %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        
+        <label>Username:</label>
+        <input type="text" name="username">
+
+        <label>Password:</label>
+        <input type="password" name="password">
+
+        <button type="submit">Submit</button>
+    </form>
+</center>
+
+{% endblock %}

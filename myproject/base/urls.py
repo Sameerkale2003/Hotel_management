@@ -3,7 +3,6 @@ from.views import *
 
 urlpatterns = [
     path("",home,name="home"),
-    path("about/",about,name="about"),
     path("history/",history,name="history"),
     path("add_room/",add_room,name='add_room'),
     path("book_now/<int:pk>",book_now,name='book_now'),

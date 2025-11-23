@@ -2,6 +2,92 @@
 
 {% block content %}
 
+<style>
+    .title {
+        text-align: center;
+        font-size: 35px;
+        margin-top: 20px;
+        color: #003366;
+    }
+
+    .room-container {
+        width: 90%;
+        margin: auto;
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+
+    .room-card {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .room-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .room-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .badge {
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-size: 13px;
+        color: white;
+    }
+
+    .available {
+        background: #28a745;
+    }
+
+    .not-available {
+        background: #dc3545;
+    }
+
+    .type {
+        font-size: 18px;
+        font-weight: bold;
+        color: #003366;
+    }
+
+    .desc {
+        font-size: 15px;
+        color: #555;
+        margin: 8px 0;
+    }
+
+    .price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #007bff;
+        margin: 10px 0;
+    }
+
+    .book-btn {
+        display: inline-block;
+        text-decoration: none;
+        background: #0077cc;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 6px;
+        transition: 0.3s;
+    }
+
+    .book-btn:hover {
+        background: #005fa3;
+    }
+</style>
+
 <h1 class="title">Available Rooms</h1>
 
 <div class="room-container">
@@ -20,12 +106,15 @@
         <p class="desc">{{ i.room_desc }}</p>
         <p class="price">₹ {{ i.price_per_night }}</p>
 
+        {% if i.is_available %}
         <a href="{% url 'book_now' i.id %}" class="book-btn">Book Now</a>
+        {% else %}
+        <a class="book-btn" style="background:#999; pointer-events:none;">Not Available</a>
+        {% endif %}
 
     </div>
     {% endfor %}
 
 </div>
-
 
 {% endblock %}
